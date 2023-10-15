@@ -1,0 +1,62 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Correlation between CO2 Emission and Primary Energy Sources",
+        "anchor": "middle",
+        "fontSize":16, "fontWeight":600
+    },
+    "repeat": ["Electricity from fossil fuels (TWh)", "Electricity from nuclear (TWh)", "Electricity from renewables (TWh)"],
+    "columns": 3, 
+    "spec": {
+        "height": 250,
+        "width": 400,
+        "data": {
+        "url": "https://raw.githubusercontent.com/terenially/FIT3179-Data-Visualisation-2/main/data/global-data-on-sustainable-energy.csv"
+        },
+        "params": [{
+            "name": "grid",
+            "select": "interval",
+            "bind": "scales"
+          }],
+        "mark": {"type": "point", "size": 80},
+        "transform": [
+            {
+                "filter": {
+                  "field": "Year",
+                  "timeUnit": "year",
+                  "range": [2000, 2019]
+                }
+              }
+          ],
+        "encoding": {
+            "x": {
+                "field": {"repeat": "repeat"},
+                "type": "quantitative",
+                "axis": { "tickCount": 6, "grid": false}
+            },
+            "y": {
+                "field": "Value_co2_emissions_kt_by_country",
+                "type": "quantitative",
+                "axis": {"tickCount": 8, "grid": false},
+                "title": "C02 Emissions / kt"
+            },
+            "color": {
+                "field": "Value_co2_emissions_kt_by_country",
+                "type": "quantitative",
+                "scale": {
+                "type": "threshold",
+                "domain": [200000, 400000, 600000, 800000, 1000000],
+                "range": ["#cea583", "#ba8f72", "#9f7563", "#926a59", "#7e5d4f"]
+                },
+                "title": "C02 Emissions / kt"
+            },
+            "opacity": {"value": 0.6},
+            "tooltip": [
+                {"field": "Entity", "type": "nominal"},
+                {"field": "Year", "type": "nominal", "timeUnit": "year"},
+                {"field": "Value_co2_emissions_kt_by_country", "type": "quantitative", "title": "C02 Emissions / kt", "format" : ".2f"},
+                {"field": {"repeat": "repeat"}, "type": "quantitative"}
+            ]
+        }
+    }
+  }

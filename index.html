@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>32629435 Terenia Lee Leh Yi - FIT3179 Data Visualisation 2</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- pure grid group -->
+    <div class="pure-g" style="text-align: center;">
+      <div class="pure-u-1-1">
+        <h1>Global Primary Energy Consumption</h1>
+        <p><br>Casting a spotlight on the worldwide stage, this data visualization <br>unveils our primary energy generation and its consequential effects.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <!-- Introduction to Primary Energy Resources -->
+    <div class = "pure-g">
+      <div class = "pure-u-1-1">
+          <h2>What primary energy sources power our world?</h2>
+          <div class = "text1">
+              <p><br>Primary energy sources are <strong style="color: #2f5e53; font-weight: 900;">natural resources</strong> that are <strong style="color: #2f5e53; font-weight: 900;">directly harvested</strong> or <br> extracted from the environment to generate energy. <br><br>These sources include <strong style="color: #2f5e53; font-weight: 900;">fossil fuels</strong> (such as coal, oil, and natural gas), <br><strong style="color: #2f5e53; font-weight: 900;">renewable sources</strong> (such as sunlight, wind, and water), and <strong style="color: #2f5e53; font-weight: 900;">nuclear materials</strong>. </p>
+              <br>
+              <br>
+              <img src="primary_energy_resources_1.jpg" alt="Image showing different types of primary energy resources">
+              <br><br><br>
+              <p>Primary energy sources serve as the <strong style="color: #2f5e53; font-weight: 900;">foundation</strong> for electricity generation, <br>transportation, and various industrial processes, playing a crucial role in <br><strong style="color: #2f5e53; font-weight: 900;">powering</strong> our daily lives and <strong style="color: #2f5e53; font-weight: 900;">fueling</strong> economic activities.<br></p>
+          </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <!-- Choropleth Map -->
+    <div class = "pure-g">
+      <div class = "pure-u-1-1">
+          <h2>Explore the world's energy landscape</h2>
+          <div class = "text1">
+              <p><br>See how different countries embrace primary energy consumption.</p>
+              <br>
+              <br>
+              <div class = "pure-u-1-1">
+                  <div id = "vis1" class = "vis-container"></div>
+                  <p><br>Countries with <strong style="color: #2f5e53; font-weight: 900;">high energy consumption per capita</strong> often have a <strong style="color: #2f5e53; font-weight: 900;">larger carbon footprint</strong>.</p>
+                  <p><br>Larger carbon footprint refers to a <strong style="color: #2f5e53; font-weight: 900;">higher</strong> total amount of greenhouse gases<br>, particularly <strong style="color: #2f5e53; font-weight: 900;">carbon dioxide (CO2)</strong>.</p>
+                  <p><br>By <strong style="color: #2f5e53; font-weight: 900;">reducing</strong> energy consumption per person, nations can <br>contribute significantly to global efforts to <strong style="color: #2f5e53; font-weight: 900;">mitigate climate change</strong>.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+    <br>
+    <!-- end pure grid group -->
+
+<!-- Header for Bubble Chart -->
+<div class = "pure-g">
+  <div class = "pure-u-1-1">
+      <h2>Prosperity and Power</h2>
+      <br>
+  </div>
+</div>
+<!-- End Header for Bubble Chart -->
+
+<!-- pure grid group -->
+<!-- Bubble Chart -->
+  <div class = "pure-g">
+    <div class = "pure-u-1-2">
+      <div class="description description-left" style="padding-top: 180px;">
+        <p style="color: grey; font-size: 16px; font-weight: 600;">Note: Zoom in for a closer look at data points.</p>
+        <p><strong style="color: #2f5e53; font-weight: 900;">Rising GDP per capita</strong> is accompanied by a consistent <strong style="color: #2f5e53; font-weight: 900;">rise <br> in primary energy consumption</strong>, revealing the <strong style="color: #2f5e53; font-weight: 900;">intrinsic link</strong> <br>between economic growth and energy demand.</p>
+      </div>
+    </div>
+    <div class="pure-u-1-2">
+      <div id="vis5" class="vis-container"></div>
+    </div>
+  </div>
+  <br>
+<!-- end pure grid group -->
+
+<!-- pure grid group -->
+<!-- Scatterplot Correlation -->
+  <div class = "pure-g">
+    <div class = "pure-u-1-1">
+        <h2>However, there is a downside</h2>
+        <br>
+        <div class = "text2">
+            <div class = "pure-u-1-1">
+                <div id = "vis2" class = "vis-container"></div>
+                <p style="color: grey; font-size: 16px; font-weight: 600;">Note: Zoom in for a closer look at data points.</p>
+                <p><br><br>The data shows a <strong style="color: #2f5e53; font-weight: 900;">strong positive correlation <br>between fossil fuel usage and CO2 emissions</strong>.<br><br>While nuclear and renewables also exhibit positive correlations, <br>they are not as pronounced as fossil fuels.<br><br></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <br>
+<!-- end pure grid group -->
+
+<!-- pure grid group -->
+<!-- Line Charts -->
+  <div class = "pure-g">
+        <div class = "text1">
+          <div class="pure-u-1-3">
+            <div class="description description-left">
+              <h3>Let's take a closer look: </h3>
+              <p>Countries <strong style="color: #2f5e53; font-weight: 900;">relying heavily</strong> on fossil fuels for electricity also produce significantly <strong style="color: #2f5e53; font-weight: 900;">higher CO2 emissions</strong>. It highlights the <strong style="color: #2f5e53; font-weight: 900;">direct link</strong> between fossil fuel usage and environmental harm.</p>
+            </div>
+          </div>
+          <div class="pure-u-1-3">
+            <div id="vis3" class="vis-container" style="margin-left: 20px;"></div>
+          </div>
+          <div class="pure-u-1-3">
+            <div id="vis4" class="vis-container" style="margin-left: 20px;"></div>
+          </div>
+        </div>
+    </div>
+  <br>
+<!-- end pure grid group -->
+
+<!-- Header for Bar Chart -->
+<div class = "pure-g">
+  <div class = "pure-u-1-1">
+      <h2>Where Nations Embrace Green Energy</h2>
+      <br>
+  </div>
+</div>
+<!-- End Header for Bar Chart -->
+
+<!-- pure grid group -->
+<!-- Bar Chart -->
+  <div class = "pure-g">
+    <div class="pure-u-1-2">
+      <div id="vis6" class="vis-container"></div>
+    </div>
+    <div class = "pure-u-1-2">
+      <div class="description description-right" style="padding-top: 150px;">
+        <h3>Building upon the line chart above,</h3>
+        <p><br>Here lies <strong style="color: #2f5e53; font-weight: 900;">comparative analysis</strong> of renewable energy adoption among <br>nations with one of the highest and lowest carbon dioxide emissions <br>resulting from fossil fuel usage.</p>
+        <br>
+        <p><br>Countries with <strong style="color: #2f5e53; font-weight: 900;">lower CO2 emissions</strong> often <br>boast <strong style="color: #2f5e53; font-weight: 900;">higher renewable energy shares</strong>.</p>
+      </div>
+    </div>
+  </div>
+  <br>
+<!-- end pure grid group -->
+
+  <!-- pure grid group -->
+  <!-- Conclusion -->
+  <div class = "pure-g">
+    <div class = "pure-u-1-1">
+        <h2>In a Nutshell</h2>
+        <br>
+        <div class = "text1">
+            <div class = "pure-u-1-1">
+                <p><br>To secure a <strong style="color: #2f5e53; font-weight: 900;">brighter future</strong> for our planet, nations <strong style="color: #2f5e53; font-weight: 900;">must transition from</strong> <br>fossil fuel-based energy production to <strong style="color: #2f5e53; font-weight: 900;">harnessing</strong><br> the potential of renewable sources.</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <br>
+<!-- end pure grid group -->
+
+  <!-- footer -->
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font" style="padding-bottom: 0;">
+        <p><br><br><br>This visualisation is created by <a href="https://github.com/terenially/FIT3179-Data-Visualisation-2" target="_blank">Terenia Lee Leh Yi 32629435</a></p>
+        <p>Data source from <a href="https://www.kaggle.com/code/james324/global-sustainable-energy-on-world-map">Kaggle</a>.</p>
+      </div>
+    </div>
+  <!-- end footer -->
+  </div>
+  <!-- end page -->
+
+  <script type="text/javascript">
+    var specVis1 = "./choropleth_map.vg.json";
+    var specVis2 = "./scatterplot_correlation.vg.json";
+    var specVis3 = "./co2_emissions_line_chart.vg.json";
+    var specVis4 = "./fossil_fuels_line_chart.vg.json";
+    var specVis5 = "./bubble_chart.vg.json";
+    var specVis6 = "./renewable_energy_share_bar_chart.vg.json";
+
+    vegaEmbed('#vis1', specVis1, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis5', specVis5, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis6', specVis6, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+  </script>
+</body>
+
+</html>

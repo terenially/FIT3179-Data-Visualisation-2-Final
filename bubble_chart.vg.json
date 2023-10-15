@@ -1,0 +1,91 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 500,
+    "padding": {"left": 10, "right": 10, "top": 10, "bottom": 0},
+    "title": {"text":"GDP per Capita vs Primary Energy Consumption per Capita","fontSize":16, "fontWeight":600},
+    "data": {
+      "url": "https://raw.githubusercontent.com/terenially/FIT3179-Data-Visualisation-2/main/data/global-data-on-sustainable-energy.csv"
+    },
+    "params":[
+        {
+          "name": "Country_selection",
+          "bind" : {
+            "input":"select",
+            "options":[null, "Qatar", "Iceland", "Singapore", "Bahrain", "United Arab Emirates"],
+            "labels":["Show All","Qatar", "Iceland", "Singapore", "Bahrain", "United Arab Emirates"],
+            "name":"Country selection: "
+        }
+        },
+        {
+          "name": "grid",
+          "select": "interval",
+          "bind": "scales"
+        }
+        ],
+    "transform": [
+      {
+        "filter": "Country_selection == null || datum.Entity == Country_selection"
+      },
+      {
+        "filter": {
+          "field": "Year",
+          "timeUnit": "year",
+          "range": [2000, 2019]
+        }
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "gdp_per_capita",
+        "type": "quantitative",
+        "title": "GDP per Capita",
+        "axis": {"tickCount": 7},
+        "scale" : {"domain" : [0,100000]}
+      },
+      "y": {
+        "field": "Primary energy consumption per capita (kWh/person)",
+        "type": "quantitative",
+        "axis": {"tickCount": 6},
+        "scale" : {"domain" : [100000,300000]}
+      }
+    },
+    "layer": [
+      {
+        "mark": "circle",
+        "encoding": {
+          "size": {
+            "field": "Energy intensity level of primary energy (MJ/$2017 PPP GDP)",
+            "title" : "Energy intensity level",
+            "type": "quantitative",
+            "scale": {
+              "type": "threshold",
+              "domain": [2, 4, 6, 8, 12],
+              "range": [50, 100, 250, 500, 800, 2000]
+            },
+            "legend": {"format": ".1s"}
+          },
+          "color": {
+            "field": "Entity",
+            "type": "nominal",
+            "scale": {
+              "domain": [
+                "Qatar", "Iceland", "Singapore", "Bahrain", "United Arab Emirates"
+              ],
+              "range": [
+                "#bca099","#365674","#f5c3c3","#f0e1bc","#c4b7d4","#f28482","#637eb6","#5e3c58","#bfb5b2","#ea9c4b"
+              ]
+            }
+          },
+          "opacity": {"value": 0.6},
+          "tooltip": [
+            {"field": "Entity", "type": "nominal"},
+            {"field": "Year", "type": "nominal", "timeUnit": "year"},
+            {"field": "gdp_per_capita", "type": "quantitative", "format": ",", "title": "GDP per Capita"},
+            {"field": "Primary energy consumption per capita (kWh/person)", "type": "quantitative", "format": ","},
+            {"field": "Energy intensity level of primary energy (MJ/$2017 PPP GDP)"}
+          ]
+        }
+      }
+    ]
+  }

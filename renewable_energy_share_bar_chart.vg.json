@@ -1,0 +1,52 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "https://raw.githubusercontent.com/terenially/FIT3179-Data-Visualisation-2/main/data/global-data-on-sustainable-energy.csv"},
+    "width" : 500,
+    "height" : 500,
+    "layer":[{
+    "mark": "bar",
+    "transform": [
+        {
+          "filter": {
+            "field": "Entity",
+            "oneOf": ["Iceland", "Singapore", "Trinidad and Tobago", "Canada", "Norway"]
+          }
+        },
+        {
+            "filter": {
+              "field": "Year",
+              "oneOf": ["2000"]
+            }
+          }
+      ],
+    "encoding": {
+      "x": {"field": "Entity", "type": "ordinal", "title" : "Country", "sort": {"field": "Renewable energy share in the total final energy consumption (%)", "order": "ascending"}},
+      "y": {"field": "Renewable energy share in the total final energy consumption (%)", "type": "quantitative", "title": "Renewable energy share (%)"},
+      "color": {"field": "Entity", "type": "nominal", "title":"Country",
+      "scale":{
+        "domain":["Iceland", "Singapore", "Trinidad and Tobago", "Canada", "Norway"], 
+        "range":["#365674","#f5c3c3","#f28482","#9aaab9","#5e3c58"]}
+      },
+      "tooltip": [
+        {"field": "Entity", "title": "Country"},
+        {"field": "Renewable energy share in the total final energy consumption (%)", "title": "Renewable energy share in the total final energy consumption (%)"}
+    ]
+    }},
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 11,
+        "fontStyle" : "bold",
+        "dx": -50,
+        "dy" : -120
+      },
+      "encoding": {
+        "text": {"condition": {"test": "datum['Renewable energy share in the total final energy consumption (%)'] == 60.18","value": ["Norway and Iceland's high renewable", "energy share contributes to lesser" , "greenhouse gas emission hence", "reducing environmental impact."]}},
+        "color" : {"value" : "black"},
+        "opacity":{"condition":{"test": "datum['Renewable energy share in the total final energy consumption (%)'] == 60.18", "value":1}, "value":0}
+      }
+    }
+  ]
+  }
